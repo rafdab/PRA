@@ -1,12 +1,10 @@
 package Proj1;
 
-import javax.swing.text.Position;
-
 public class SQLKeyWord {
-    int position;
-    String keyWord;
+    private int position;
+    private String keyWord;
 
-    public SQLKeyWord(int position, String keyWord) {
+    SQLKeyWord(int position, String keyWord) {
         this.position = position;
         this.keyWord = keyWord;
     }
@@ -18,14 +16,14 @@ public class SQLKeyWord {
         this.keyWord = keyWord;
     }
 
-    public int getPosition() {
+    int getPosition() {
         return position;
     }
     public void setPosition(int position) {
         this.position = position;
     }
 
-    public int getKeyWordPower(){
+    int getKeyWordPower(){
         int a = 0;
         if (keyWord.equals("select")) {
             a = 1;
