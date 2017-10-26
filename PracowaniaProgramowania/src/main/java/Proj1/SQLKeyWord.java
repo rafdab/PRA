@@ -1,7 +1,5 @@
 package Proj1;
 
-import javax.swing.text.Position;
-
 public class SQLKeyWord {
     int position;
     String keyWord;
