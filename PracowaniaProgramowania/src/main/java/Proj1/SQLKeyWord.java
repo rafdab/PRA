@@ -25,4 +25,20 @@ public class SQLKeyWord {
         this.position = position;
     }
 
+    public int getKeyWordPower(){
+        int a = 0;
+        if (keyWord.equals("select")) {
+            a = 1;
+        }
+        if (keyWord.equals("from")) {
+            a = 2;
+        }
+        if (keyWord.equals("where")) {
+            a = 3;
+        }
+        if (keyWord.equals("order by")) {
+            a = 4;
+        }
+        return a;
+    }
 }
