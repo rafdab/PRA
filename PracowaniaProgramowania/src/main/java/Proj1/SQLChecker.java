@@ -1,11 +1,8 @@
 package Proj1;
 
-import com.mchange.v2.encounter.StrongEqualityEncounterCounter;
-
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
-import java.lang.reflect.Array;
 import java.util.*;
 
 class SQLChecker {
