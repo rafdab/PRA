@@ -29,7 +29,7 @@ class SQLChecker {
         return true;
     }
 
-    private static boolean checkSql(String input){
+    public static boolean checkSql(String input){
         String keyWordTable[] = {"select", "from", "where", "order by"};
         List<SQLKeyWord> keyWordList = new ArrayList<>();
         int count = 0;

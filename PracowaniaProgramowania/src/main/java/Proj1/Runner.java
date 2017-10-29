@@ -27,7 +27,7 @@ public class Runner {
                 .withIdentity("reminderTrigger")
                 .startNow()
                 .withSchedule(CronScheduleBuilder
-                        .cronSchedule("0 * 8-19 ? * MON,TUE,WED,THU,FRI,SUN *"))
+                        .cronSchedule("0 * 8-19 ? * MON,TUE,WED,THU,FRI *"))
                 .build();
 
         reminderSch.scheduleJob(reminderJob, reminderTrigger);

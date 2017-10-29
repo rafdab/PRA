@@ -13,13 +13,13 @@ public class Reminder implements org.quartz.Job {
         Calendar now = Calendar.getInstance();
         int timeLeft = getMinutes(now.get(Calendar.HOUR_OF_DAY) * 60 + now.get(Calendar.MINUTE));
 
-        if (timeLeft <= 0) System.out.println("\nLiczba minut do końca zajęć: " + timeLeft + "\n");
+        if (timeLeft <= 0) System.out.println("\nLiczba minut do końca zajęć: " + -timeLeft + "\n");
         else System.out.println("\nLiczba minut do końca przerwy: " + timeLeft + "\n");
     }
 
-    private int getMinutes(int currentTime){
+    public int getMinutes(int currentTime){
         int startTime[] = {8*60+15, 10*60, 11*60+45, 13*60+45, 15*60+30, 17*60+15, 19*60};
-        int endTime[] = {9*60+30, 11*60+30, 13*60+15, 5*60+15, 17*60, 18*60+45};
+        int endTime[] = {9*60+30, 11*60+30, 13*60+15, 15*60+15, 17*60, 18*60+45};
         int minutes = 0
                 ;
         for (int i = 0; i < startTime.length - 1; ++i){
