@@ -6,17 +6,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.*;
 
 class SQLChecker {
-    static boolean start(ArrayList<String> queryList){
-        Scanner scan = new Scanner(System.in);
-
-        System.out.print("Podaj numer zadania: ");
-        int nrZad = scan.nextInt();
-        if (nrZad == 0) return false;
-
-        System.out.println("Podaj rozwiązanie:");
-        String sql;
-        scan.nextLine();
-        sql = scan.nextLine();
+    static boolean start(int nrZad, String sql, ArrayList<String> queryList){
         if (sql.equals("STOP") || sql.equals("stop")) return false;
 
         if(checkSql(sql)){
