@@ -1,4 +1,5 @@
-# Przyrost I
-Program ma za zadanie sprawdzić (naiwnie) poprawność zapytanie SQL. Dodatkowo zapisuje postęp co 30 sekund oraz co minutę wyświetla powiadomienie ile czasu zostało do końca zajęć/przerwy.
+#Wypożyczalnia
+Projekt będzie umozliwiał zarządzanie bazą danych wypożyczalni.
 
-Aby rozpocząć wykonywanie programu należy uruchomić klasę Runner.
+###Przyrost II
+Przygotowanie bazy danych(modelu danych) do pracy oraz serializacja/deserializacja JSON oraz XML.
