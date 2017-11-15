@@ -2,6 +2,7 @@ package Wypozyczalnia.model;
 
 import javax.persistence.*;
 import java.time.ZonedDateTime;
+import java.util.Set;
 
 @Entity
 @Table(name = "Employee")
@@ -26,6 +27,9 @@ public class Employee {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id", referencedColumnName = "id")
     Address address;
+
+    @OneToMany(mappedBy = "Rent")
+    private Set<Rent> rent;
 
     public Employee() {
     }
@@ -60,6 +64,14 @@ public class Employee {
         this.salary = salary;
         this.hired = hired;
         this.address = address;
+    }
+
+    public Set<Rent> getRent() {
+        return rent;
+    }
+
+    public void setRent(Set<Rent> rent) {
+        this.rent = rent;
     }
 
     public int getId() {

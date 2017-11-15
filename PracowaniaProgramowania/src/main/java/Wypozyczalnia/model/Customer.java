@@ -1,6 +1,7 @@
 package Wypozyczalnia.model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "Customer")
@@ -18,6 +19,9 @@ public class Customer {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id", referencedColumnName = "id")
     Address address;
+
+    @OneToMany(mappedBy = "Rent")
+    private Set<Rent> rent;
 
     public Customer() {
     }
@@ -43,6 +47,14 @@ public class Customer {
         this.name = name;
         this.surname = surname;
         this.address = address;
+    }
+
+    public Set<Rent> getRent() {
+        return rent;
+    }
+
+    public void setRent(Set<Rent> rent) {
+        this.rent = rent;
     }
 
     public int getId() {
