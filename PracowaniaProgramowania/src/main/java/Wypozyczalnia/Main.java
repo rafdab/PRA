@@ -14,7 +14,6 @@ public class Main {
         System.out.println("Let's start");
 
         Employee e1 = new Employee("Jan", "Kowlski", 2000, "Poznan", "Wrzosowa", "1", "60-600", "123123123", "jkowal@mail.pl");
-        Customer c1 = new Customer("Tomasz", "Malinowski", "Poznan", "Dluga", "13", "2", "60-600", "345345345", "tmalina@mail.pl");
         Thing t1 = new Thing("Toyota Corolla", "sedan", 500 , 1000);
 
         //łącznie z db
@@ -27,13 +26,12 @@ public class Main {
             entityManager.getTransaction().begin();
 
             entityManager.persist(e1);
-            entityManager.persist(c1);
             entityManager.persist(t1);
 
             entityManager.getTransaction().commit();
             entityManager.close();
         }catch (Throwable e){
-            System.err.println("Error");
+            System.err.println("Error: " + e);
         }finally {
             entityManagerFactory.close();
         }
