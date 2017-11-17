@@ -28,7 +28,7 @@ public class Employee {
     @JoinColumn(name = "address_id", referencedColumnName = "id")
     Address address;
 
-    @OneToMany(mappedBy = "Rent")
+    @OneToMany(mappedBy = "id")
     private Set<Rent> rent;
 
     public Employee() {

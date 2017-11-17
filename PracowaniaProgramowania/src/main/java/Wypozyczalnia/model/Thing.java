@@ -23,7 +23,7 @@ public class Thing {
     @Column(name = "bail")
     float bail;
 
-    @OneToMany(mappedBy = "Rent")
+    @OneToMany(mappedBy = "id")
     private Set<Rent> rent;
 
     public Thing(String name, String type, float price, float bail) {
