@@ -8,7 +8,9 @@ import java.util.Set;
 @Table(name = "Employee")
 public class Employee {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue(generator = "employee_gen")
+    @SequenceGenerator(name = "employee_gen", sequenceName = "employee_seq", allocationSize = 1)
     @Column(name = "id")
     int id;
 

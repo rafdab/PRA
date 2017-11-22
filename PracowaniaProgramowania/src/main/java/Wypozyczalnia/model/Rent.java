@@ -7,7 +7,9 @@ import java.time.ZonedDateTime;
 @Table(name = "Rent")
 public class Rent {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue(generator = "rent_gen")
+    @SequenceGenerator(name = "rent_gen", sequenceName = "rent_seq", allocationSize = 1)
     @Column(name = "id")
     int id;
 
@@ -21,18 +23,25 @@ public class Rent {
     float profit;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "id", insertable = false, updatable = false)
     Customer customer;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "id", insertable = false, updatable = false)
     Employee employee;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "id", insertable = false, updatable = false)
     Thing thing;
 
     public Rent() {
+    }
+
+    public Rent(Customer customer, Employee employee, Thing thing) {
+        this.rentDate = ZonedDateTime.now();
+        this.customer = customer;
+        this.employee = employee;
+        this.thing = thing;
     }
 
     public Rent(ZonedDateTime rentDate, Customer customer, Employee employee, Thing thing) {

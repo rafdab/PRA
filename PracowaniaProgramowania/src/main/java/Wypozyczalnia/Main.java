@@ -2,6 +2,7 @@ package Wypozyczalnia;
 
 import Wypozyczalnia.model.Customer;
 import Wypozyczalnia.model.Employee;
+import Wypozyczalnia.model.Rent;
 import Wypozyczalnia.model.Thing;
 
 import javax.persistence.EntityManager;
@@ -14,9 +15,11 @@ public class Main {
         System.out.println("Let's start");
 
         Employee e1 = new Employee("Jan", "Kowlski", 2000, "Poznan", "Wrzosowa", "1", "60-600", "123123123", "jkowal@mail.pl");
+        Customer c1 = new Customer("Tomasz", "Malinowski", "Poznan", "Głogowska", "13", "60-688", "918293042", "tmalina@mail.pl");
         Thing t1 = new Thing("Toyota Corolla", "sedan", 500 , 1000);
+        Rent r1 = new Rent(c1, e1, t1);
 
-        //łącznie z db
+        //connect to db
         EntityManager entityManager = null;
         EntityManagerFactory entityManagerFactory = null;
         try{
@@ -27,6 +30,8 @@ public class Main {
 
             entityManager.persist(e1);
             entityManager.persist(t1);
+            entityManager.persist(c1);
+            entityManager.persist(r1);
 
             entityManager.getTransaction().commit();
             entityManager.close();

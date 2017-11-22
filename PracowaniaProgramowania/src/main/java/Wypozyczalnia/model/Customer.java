@@ -6,7 +6,9 @@ import java.util.Set;
 @Entity
 @Table(name = "Customer")
 public class Customer {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue(generator = "customer_gen")
+    @SequenceGenerator(name = "customer_gen", sequenceName = "customer_seq", allocationSize = 1)
     @Column(name = "id")
     int id;
 

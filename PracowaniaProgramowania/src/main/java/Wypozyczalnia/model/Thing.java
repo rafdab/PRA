@@ -7,7 +7,9 @@ import java.util.Set;
 @Table(name = "Thing")
 public class Thing {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue(generator = "thing_gen")
+    @SequenceGenerator(name = "thing_gen", sequenceName = "thing_seq", allocationSize = 1)
     @Column(name = "id")
     int id;
 
