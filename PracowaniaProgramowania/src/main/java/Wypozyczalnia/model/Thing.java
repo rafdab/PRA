@@ -1,8 +1,12 @@
 package Wypozyczalnia.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
 import java.util.Set;
 
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="refId", scope=Thing.class)
 @Entity
 @Table(name = "Thing")
 public class Thing {

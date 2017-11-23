@@ -1,9 +1,15 @@
 package Wypozyczalnia.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import org.joda.time.DateTime;
+
 import javax.persistence.*;
 import java.time.ZonedDateTime;
 import java.util.Set;
 
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="refId", scope=Employee.class)
 @Entity
 @Table(name = "Employee")
 public class Employee {
@@ -24,7 +30,8 @@ public class Employee {
     float salary;
 
     @Column(name = "hired", nullable = false)
-    ZonedDateTime hired;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    DateTime hired;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id", referencedColumnName = "id")
@@ -48,7 +55,7 @@ public class Employee {
         this.surname = surname;
         this.salary = salary;
         this.address = new Address(city, street, nr, postcode, phoneNumber, mail);
-        this.hired = ZonedDateTime.now();
+        this.hired = DateTime.now();
     }
 
 
@@ -57,10 +64,10 @@ public class Employee {
         this.surname = surname;
         this.salary = salary;
         this.address = new Address(city, street, nr, houseNumber, postcode, phoneNumber, mail);
-        this.hired = ZonedDateTime.now();
+        this.hired = DateTime.now();
     }
 
-    public Employee(String name, String surname, float salary, ZonedDateTime hired, Address address) {
+    public Employee(String name, String surname, float salary, DateTime hired, Address address) {
         this.name = name;
         this.surname = surname;
         this.salary = salary;
@@ -108,11 +115,11 @@ public class Employee {
         this.salary = salary;
     }
 
-    public ZonedDateTime getHired() {
+    public DateTime getHired() {
         return hired;
     }
 
-    public void setHired(ZonedDateTime hired) {
+    public void setHired(DateTime hired) {
         this.hired = hired;
     }
 

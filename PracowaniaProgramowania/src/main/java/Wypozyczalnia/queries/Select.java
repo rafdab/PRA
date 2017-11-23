@@ -1,8 +1,6 @@
 package Wypozyczalnia.queries;
 
-import Wypozyczalnia.model.Customer;
-import Wypozyczalnia.model.Employee;
-import Wypozyczalnia.model.Thing;
+import Wypozyczalnia.model.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -28,6 +26,16 @@ public class Select {
 
     public List<Thing> allThings(){
         TypedQuery<Thing> query = entityManager.createQuery("SELECT t FROM Thing t", Thing.class);
+        return query.getResultList();
+    }
+
+    public List<Rent> allRents(){
+        TypedQuery<Rent> query = entityManager.createQuery("SELECT t FROM Rent t", Rent.class);
+        return query.getResultList();
+    }
+
+    public List<Address> allAddresses(){
+        TypedQuery<Address> query = entityManager.createQuery("SELECT t FROM Address t", Address.class);
         return query.getResultList();
     }
 

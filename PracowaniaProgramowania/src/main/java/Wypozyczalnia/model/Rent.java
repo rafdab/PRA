@@ -1,8 +1,14 @@
 package Wypozyczalnia.model;
 
-import javax.persistence.*;
-import java.time.ZonedDateTime;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.sun.org.apache.regexp.internal.RE;
+import org.joda.time.DateTime;
 
+import javax.persistence.*;
+
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="refId", scope=Rent.class)
 @Entity
 @Table(name = "Rent")
 public class Rent {
@@ -13,11 +19,13 @@ public class Rent {
     @Column(name = "id")
     int id;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Column(name = "rent_date", nullable = false)
-    ZonedDateTime rentDate;
+    DateTime rentDate;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Column(name = "return_date")
-    ZonedDateTime returnDate;
+    DateTime returnDate;
 
     @Column(name = "profit")
     float profit;
@@ -42,18 +50,18 @@ public class Rent {
         this.employee = employee;
         this.thing = thing;
 
-        this.rentDate = ZonedDateTime.now();
+        this.rentDate = DateTime.now();
         this.returnDate = null;
     }
 
-    public Rent(ZonedDateTime rentDate, Customer customer, Employee employee, Thing thing) {
+    public Rent(DateTime rentDate, Customer customer, Employee employee, Thing thing) {
         this.rentDate = rentDate;
         this.customer = customer;
         this.employee = employee;
         this.thing = thing;
     }
 
-    public Rent(ZonedDateTime rentDate, ZonedDateTime returnDate, float profit, Customer customer, Employee employee, Thing thing) {
+    public Rent(DateTime rentDate, DateTime returnDate, float profit, Customer customer, Employee employee, Thing thing) {
         this.rentDate = rentDate;
         this.returnDate = returnDate;
         this.profit = profit;
@@ -70,19 +78,19 @@ public class Rent {
         this.id = id;
     }
 
-    public ZonedDateTime getRentDate() {
+    public DateTime getRentDate() {
         return rentDate;
     }
 
-    public void setRentDate(ZonedDateTime rentDate) {
+    public void setRentDate(DateTime rentDate) {
         this.rentDate = rentDate;
     }
 
-    public ZonedDateTime getReturnDate() {
+    public DateTime getReturnDate() {
         return returnDate;
     }
 
-    public void setReturnDate(ZonedDateTime returnDate) {
+    public void setReturnDate(DateTime returnDate) {
         this.returnDate = returnDate;
     }
 
