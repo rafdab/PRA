@@ -4,10 +4,8 @@ import Wypozyczalnia.model.Customer;
 import Wypozyczalnia.model.Employee;
 import Wypozyczalnia.model.Rent;
 import Wypozyczalnia.model.Thing;
-import Wypozyczalnia.queries.Drop;
 import Wypozyczalnia.queries.Select;
-import Wypozyczalnia.serialization.JSON;
-import Wypozyczalnia.serialization.XML;
+import Wypozyczalnia.serialization.UsingJackson;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.joda.JodaModule;
@@ -16,7 +14,6 @@ import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.swing.text.html.parser.Entity;
 import java.util.List;
 
 public class Main {
@@ -47,18 +44,17 @@ public class Main {
             entityManager = entityManagerFactory.createEntityManager();
             entityManager.getTransaction().begin();
 
-            entityManager.persist(e1);
+/*            entityManager.persist(e1);
             entityManager.persist(t1);
             entityManager.persist(c1);
             entityManager.persist(r1);
             List<Object[]> result = new Select(entityManager).getRentsWithoutReturnDate();
             for (Object[] a : result){
                 System.out.println(a[0] + " " + a[1] + " " + a[2] + " " + a[3] + " " + a[4]);
-            }
+            }*/
 
-
-            JSON.serialization(objectMapper, entityManager);
-            XML.serialization(xmlMapper, entityManager);
+            UsingJackson.serialization(objectMapper, entityManager, "json");
+//            UsingJackson.deserialization(objectMapper,entityManager, "json");
 
             entityManager.getTransaction().commit();
             entityManager.close();

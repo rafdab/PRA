@@ -11,43 +11,24 @@ import javax.persistence.EntityManager;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Set;
 
-public class JSON {
+public class UsingJackson {
     //      database -> json
-    static public int serialization(ObjectMapper objectMapper,EntityManager entityManager){
+    static public int serialization(ObjectMapper objectMapper,EntityManager entityManager, String extension){
         int checker = 0;
 
         List<Employee> employeeList = new Select(entityManager).allEmployees();
-        try {
-            objectMapper.writeValue(new File("employee.json"), employeeList);
-        } catch (IOException e) {
-            e.printStackTrace();
-            checker += 1;
-        }
         List<Customer> customerList = new Select(entityManager).allCustomers();
-        try {
-            objectMapper.writeValue(new File("customer.json"), customerList);
-        } catch (IOException e) {
-            e.printStackTrace();
-            checker += 1;
-        }
         List<Thing> thingList = new Select(entityManager).allThings();
-        try {
-            objectMapper.writeValue(new File("thing.json"), thingList);
-        } catch (IOException e) {
-            e.printStackTrace();
-            checker += 1;
-        }
         List<Address> addressList = new Select(entityManager).allAddresses();
-        try {
-            objectMapper.writeValue(new File("address.json"), addressList);
-        } catch (IOException e) {
-            e.printStackTrace();
-            checker += 1;
-        }
         List<Rent> rentList = new Select(entityManager).allRents();
         try {
-            objectMapper.writeValue(new File("rent.json"), rentList);
+            objectMapper.writeValue(new File("employee." + extension), employeeList);
+            objectMapper.writeValue(new File("customer." + extension), customerList);
+            objectMapper.writeValue(new File("thing." + extension), thingList);
+            objectMapper.writeValue(new File("address." + extension), addressList);
+            objectMapper.writeValue(new File("rent." + extension), rentList);
         } catch (IOException e) {
             e.printStackTrace();
             checker += 1;
@@ -57,13 +38,24 @@ public class JSON {
     }
 
     //      json -> database
-    static public int deserialization(ObjectMapper objectMapper, EntityManager entityManager){
+    static public int deserialization(ObjectMapper objectMapper, EntityManager entityManager, String extension){
         int checker = 0;
 
         try {
-            List<Employee> employeeList = objectMapper.readValue(new File("employee.json"), new TypeReference<List<Employee>>(){});
+            List<Employee> employeeList = objectMapper.readValue(new File("employee." + extension), new TypeReference<List<Employee>>(){});
             for (Employee e : employeeList){
+                Address eA = e.getAddress();
+                entityManager.persist(eA);
                 entityManager.persist(e);
+
+                Set<Rent> rS = e.getRent();
+                for (Rent r : rS){
+                    Customer c = r.getCustomer();
+                    Address cA = c.getAddress();
+                    entityManager.persist(cA);
+                    entityManager.persist(c);
+                    entityManager.persist(r);
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
