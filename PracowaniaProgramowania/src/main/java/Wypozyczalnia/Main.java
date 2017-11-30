@@ -44,14 +44,14 @@ public class Main {
             entityManager = entityManagerFactory.createEntityManager();
             entityManager.getTransaction().begin();
 
-/*            entityManager.persist(e1);
+            entityManager.persist(e1);
             entityManager.persist(t1);
             entityManager.persist(c1);
             entityManager.persist(r1);
             List<Object[]> result = new Select(entityManager).getRentsWithoutReturnDate();
             for (Object[] a : result){
                 System.out.println(a[0] + " " + a[1] + " " + a[2] + " " + a[3] + " " + a[4]);
-            }*/
+            }
 
             UsingJackson.serialization(objectMapper, entityManager, "json");
 //            UsingJackson.deserialization(objectMapper,entityManager, "json");

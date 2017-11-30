@@ -43,22 +43,27 @@ public class UsingJackson {
 
         try {
             List<Employee> employeeList = objectMapper.readValue(new File("employee." + extension), new TypeReference<List<Employee>>(){});
+            List<Customer> customerList = objectMapper.readValue(new File("customer." + extension), new TypeReference<List<Customer>>(){});
+            List<Thing> thingList = objectMapper.readValue(new File("thing." + extension), new TypeReference<List<Thing>>(){});
+            List<Address> addressList = objectMapper.readValue(new File("address." + extension), new TypeReference<List<Address>>(){});
+            List<Rent> rentList = objectMapper.readValue(new File("rent." + extension), new TypeReference<List<Rent>>(){});
             for (Employee e : employeeList){
-                Address eA = e.getAddress();
-                entityManager.persist(eA);
                 entityManager.persist(e);
-
-                Set<Rent> rS = e.getRent();
-                for (Rent r : rS){
-                    Customer c = r.getCustomer();
-                    Address cA = c.getAddress();
-                    entityManager.persist(cA);
-                    entityManager.persist(c);
-                    entityManager.persist(r);
-                }
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+            for (Customer e : customerList){
+                entityManager.persist(e);
+            }
+            for (Thing e : thingList){
+                entityManager.persist(e);
+            }
+            for (Address e : addressList){
+                entityManager.persist(e);
+            }
+            for (Rent e : rentList){
+                entityManager.persist(e);
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
             checker++;
         }
 
