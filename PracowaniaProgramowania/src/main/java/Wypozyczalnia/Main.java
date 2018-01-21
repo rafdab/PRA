@@ -36,7 +36,6 @@ public class Main {
         Customer c1 = new Customer("Bartosz", "Konieczny", "Poznan", "Głogowska", "13", "60-688", "918293042", "Konieczko@mail.pl");
         Thing t1 = new Thing("BMW E46", "sedan", 500 , 1000);
         Rent r1 = new Rent(c1, e1, t1);
-
         //connect to db
         try{
             entityManagerFactory = Persistence.createEntityManagerFactory("hibernate-dynamic");
