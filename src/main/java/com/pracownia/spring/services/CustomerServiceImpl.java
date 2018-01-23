@@ -34,4 +34,12 @@ public class CustomerServiceImpl implements CustomerService{
     public void deleteCustomer(Integer id) {
         customerRepository.delete(id);
     }
+
+    @Override
+    public Boolean checkIfExist(Integer id) {
+        if (customerRepository.checkIfExist(id) > 0)
+            return true;
+        else
+            return false;
+    }
 }

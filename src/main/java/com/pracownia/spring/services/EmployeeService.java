@@ -13,4 +13,6 @@ public interface EmployeeService {
     void deleteEmployee(Integer id);
 
     public Iterable<Employee> listAllEmployeesPaging(Integer pageNr, Integer count);
+
+    Boolean checkIfExist(Integer id);
 }

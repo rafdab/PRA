@@ -13,4 +13,6 @@ public interface CustomerService {
     void deleteCustomer(Integer id);
 
     public Iterable<Customer> listAllCustomersPaging(Integer pageNr, Integer count);
+
+    Boolean checkIfExist(Integer id);
 }

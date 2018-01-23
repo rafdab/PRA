@@ -34,6 +34,14 @@ public class AddressServiceImpl implements AddressService {
     public void deleteAddress(Integer id) {
         addressRepository.delete(id);
     }
+
+    @Override
+    public Boolean checkIfExist(Integer id) {
+        if (addressRepository.checkIfExist(id) > 0)
+            return true;
+        else
+            return false;
+    }
 }
 
 

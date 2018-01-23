@@ -13,4 +13,6 @@ public interface ThingService {
     void deleteThing(Integer id);
 
     public Iterable<Thing> listAllThingsPaging(Integer pageNr, Integer count);
+
+    Boolean checkIfExist(Integer id);
 }

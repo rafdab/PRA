@@ -34,4 +34,12 @@ public class RentServiceImpl implements RentService{
     public void deleteRent(Integer id) {
         rentRepository.delete(id);
     }
+
+    @Override
+    public Boolean checkIfExist(Integer id) {
+        if (rentRepository.checkIfExist(id) > 0)
+            return true;
+        else
+            return false;
+    }
 }

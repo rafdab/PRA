@@ -34,4 +34,12 @@ public class EmployeeServiceImpl implements EmployeeService {
     public void deleteEmployee(Integer id) {
         employeeRepository.delete(id);
     }
+
+    @Override
+    public Boolean checkIfExist(Integer id) {
+        if (employeeRepository.checkIfExist(id) > 0)
+            return true;
+        else
+            return false;
+    }
 }

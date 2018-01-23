@@ -13,4 +13,6 @@ public interface AddressService {
     void deleteAddress(Integer id);
 
     public Iterable<Address> listAllAddressesPaging(Integer pageNr, Integer count);
+
+    Boolean checkIfExist(Integer id);
 }

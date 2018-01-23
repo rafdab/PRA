@@ -13,4 +13,6 @@ public interface RentService {
     void deleteRent(Integer id);
 
     public Iterable<Rent> listAllRentsPaging(Integer pageNr, Integer count);
+
+    Boolean checkIfExist(Integer id);
 }

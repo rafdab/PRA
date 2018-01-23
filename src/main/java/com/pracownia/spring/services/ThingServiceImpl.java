@@ -34,4 +34,12 @@ public class ThingServiceImpl implements ThingService {
     public void deleteThing(Integer id) {
         thingRepository.delete(id);
     }
+
+    @Override
+    public Boolean checkIfExist(Integer id) {
+        if (thingRepository.checkIfExist(id) > 0)
+            return true;
+        else
+            return false;
+    }
 }
