@@ -1,7 +1,7 @@
-package com.pracownia.spring.service;
+package com.pracownia.spring.services;
 
 import com.pracownia.spring.entities.Address;
-import com.pracownia.spring.repository.AddressRepository;
+import com.pracownia.spring.repositories.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 

@@ -1,4 +1,4 @@
-package com.pracownia.spring.service;
+package com.pracownia.spring.services;
 
 import com.pracownia.spring.entities.Address;
 

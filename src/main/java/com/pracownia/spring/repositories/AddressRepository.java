@@ -1,4 +1,4 @@
-package com.pracownia.spring.repository;
+package com.pracownia.spring.repositories;
 
 import com.pracownia.spring.entities.Address;
 import org.springframework.data.repository.CrudRepository;
