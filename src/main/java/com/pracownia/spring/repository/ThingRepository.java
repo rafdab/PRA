@@ -6,6 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface ThingRepository extends CrudRepository<Thing, Integer>{
 
-    @Query("select count(*) from Thing")
+    @Query("select count(t) from Thing t")
     Integer countAll();
 }
