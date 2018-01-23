@@ -4,7 +4,9 @@ import com.pracownia.spring.entities.Thing;
 import com.pracownia.spring.repositories.ThingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ThingServiceImpl implements ThingService {
 
     @Autowired

@@ -4,7 +4,9 @@ import com.pracownia.spring.entities.Customer;
 import com.pracownia.spring.repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CustomerServiceImpl implements CustomerService{
 
     @Autowired

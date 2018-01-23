@@ -4,7 +4,9 @@ import com.pracownia.spring.entities.Address;
 import com.pracownia.spring.repositories.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.stereotype.Service;
 
+@Service
 public class AddressServiceImpl implements AddressService {
 
     @Autowired
