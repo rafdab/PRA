@@ -1,5 +1,6 @@
 package com.pracownia.spring.controllers;
 
+import com.pracownia.spring.Utils.CustomErrorType;
 import com.pracownia.spring.entities.Customer;
 import com.pracownia.spring.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,8 @@ public class AppController {
     @RequestMapping(value = "/customer", method = RequestMethod.POST)
     public ResponseEntity<?> createCustomer(@RequestBody Customer customer, UriComponentsBuilder builder){
         if(customerService.checkIfExist(customer.getId())){
-            return null;
+            return new ResponseEntity(new CustomErrorType("Unable to create. A User with name " +
+                    customer.getName() + " already exist."),HttpStatus.CONFLICT);
         }
 
         customerService.saveCustomer(customer);
