@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service("employeeService")
 public class EmployeeServiceImpl implements EmployeeService {
 
     @Autowired
