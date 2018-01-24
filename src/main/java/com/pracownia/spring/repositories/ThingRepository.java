@@ -9,6 +9,6 @@ public interface ThingRepository extends CrudRepository<Thing, Integer>{
     @Query("select count(t) from Thing t")
     Integer countAll();
 
-    @Query("select count(*) from Thing p where p.id = ?1")
+    @Query("select count(p) from Thing p where p.id = ?1")
     Integer checkIfExist(Integer id);
 }

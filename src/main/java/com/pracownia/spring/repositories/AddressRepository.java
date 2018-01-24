@@ -7,8 +7,6 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 
 public interface AddressRepository extends CrudRepository<Address, Integer>, PagingAndSortingRepository<Address, Integer>{
 
-    Integer countAllById();
-
-    @Query("select count(*) from Address p where p.id = ?1")
+    @Query("select count(p) from Address p where p.id = ?1")
     Integer checkIfExist(Integer id);
 }

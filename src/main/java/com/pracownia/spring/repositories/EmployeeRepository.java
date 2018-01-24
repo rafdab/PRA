@@ -7,7 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 public interface EmployeeRepository extends CrudRepository<Employee, Integer> {
 
     Employee findById(Integer id);
-    Integer countAll();
-    @Query("select count(*) from Employee p where p.id = ?1")
+
+    @Query("select count(p) from Employee p where p.id = ?1")
     Integer checkIfExist(Integer id);
 }

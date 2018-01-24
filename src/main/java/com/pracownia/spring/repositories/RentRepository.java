@@ -8,10 +8,8 @@ import java.util.List;
 
 public interface RentRepository extends CrudRepository<Rent, Integer> {
 
-    Integer countAll();
-
     List<Rent> getRentsByReturnDateIsNull();
 
-    @Query("select count(*) from Rent p where p.id = ?1")
+    @Query("select count(p) from Rent p where p.id = ?1")
     Integer checkIfExist(Integer id);
 }
