@@ -10,6 +10,6 @@ public class IndexController {
     @RequestMapping("/")
     String home(ModelMap modal) {
         modal.addAttribute("title","Wypożyczalnia");
-        return "index";
+        return "index.html";
     }
 }
