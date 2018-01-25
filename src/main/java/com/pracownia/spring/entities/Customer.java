@@ -8,13 +8,12 @@ import java.util.Set;
 
 @JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="refId", scope=Customer.class)
 @Entity
-@Table(name = "Customer")
+@Table(name = "customer")
 public class Customer {
+
     @Id
-    @GeneratedValue(generator = "customer_gen")
-    @SequenceGenerator(name = "customer_gen", sequenceName = "customer_seq", allocationSize = 1)
-    @Column(name = "id")
-    int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Integer id;
 
     @Column(name = "name", nullable = false)
     String name;
@@ -23,7 +22,7 @@ public class Customer {
     String surname;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_id", referencedColumnName = "id")
+    @JoinColumn(name = "Address_id")
     Address address;
 
     @OneToMany(mappedBy = "id")
@@ -63,11 +62,11 @@ public class Customer {
         this.rent = rent;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

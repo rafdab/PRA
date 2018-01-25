@@ -11,14 +11,12 @@ import java.util.Set;
 
 @JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="refId", scope=Employee.class)
 @Entity
-@Table(name = "Employee")
+@Table(name = "employee")
 public class Employee {
 
     @Id
-    @GeneratedValue(generator = "employee_gen")
-    @SequenceGenerator(name = "employee_gen", sequenceName = "employee_seq", allocationSize = 1)
-    @Column(name = "id")
-    int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Integer id;
 
     @Column(name = "name", nullable = false)
     String name;
@@ -34,7 +32,7 @@ public class Employee {
     DateTime hired;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_id", referencedColumnName = "id")
+    @JoinColumn(name = "Address_id")
     Address address;
 
     @OneToMany(mappedBy = "id")
@@ -83,11 +81,11 @@ public class Employee {
         this.rent = rent;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

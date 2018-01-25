@@ -10,14 +10,12 @@ import javax.persistence.*;
 
 @JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="refId", scope=Rent.class)
 @Entity
-@Table(name = "Rent")
+@Table(name = "rent")
 public class Rent {
 
     @Id
-    @GeneratedValue(generator = "rent_gen")
-    @SequenceGenerator(name = "rent_gen", sequenceName = "rent_seq", allocationSize = 1)
-    @Column(name = "id")
-    int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Integer id;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Column(name = "rent_date", nullable = false)
@@ -70,11 +68,11 @@ public class Rent {
         this.thing = thing;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

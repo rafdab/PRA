@@ -8,14 +8,12 @@ import java.util.Set;
 
 @JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="refId", scope=Thing.class)
 @Entity
-@Table(name = "Thing")
+@Table(name = "thing")
 public class Thing {
 
     @Id
-    @GeneratedValue(generator = "thing_gen")
-    @SequenceGenerator(name = "thing_gen", sequenceName = "thing_seq", allocationSize = 1)
-    @Column(name = "id")
-    int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Integer id;
 
     @Column(name = "name")
     String name;
@@ -50,11 +48,11 @@ public class Thing {
         this.rent = rent;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

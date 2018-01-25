@@ -7,34 +7,32 @@ import javax.persistence.*;
 
 @JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="refId", scope=Address.class)
 @Entity
-@Table(name = "Address")
+@Table(name = "address")
 public class Address {
 
     @Id
-    @GeneratedValue(generator = "address_gen")
-    @SequenceGenerator(name = "address_gen", sequenceName = "address_seq", allocationSize = 1)
-    @Column(name = "id")
-    int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Integer id;
 
-    @Column(name = "city", nullable = false)
+    @Column
     String city;
 
-    @Column(name = "street", nullable = false)
+    @Column
     String street;
 
-    @Column(name = "nr", nullable = false)
+    @Column
     String nr;
 
-    @Column(name = "houseNumber")
+    @Column
     String houseNumber;
 
-    @Column(name = "postcode", nullable = false)
+    @Column
     String postcode;
 
-    @Column(name = "phoneNumber", nullable = false)
+    @Column
     String phoneNumber;
 
-    @Column(name = "mail", nullable = false)
+    @Column
     String mail;
 
     public Address() {
@@ -59,11 +57,11 @@ public class Address {
         this.mail = mail;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
